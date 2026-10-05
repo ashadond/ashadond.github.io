@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asha K. Dond — School of Mathematics, IISER Thiruvananthapuram</title>
+  <meta name="description" content="Asha K. Dond, Associate Professor of Mathematics at IISER Thiruvananthapuram. Finite element methods, adaptive FEM, stabilized methods and optimal control.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #faf7f9;
+      --bg-alt: #f1eaef;
+      --surface: #fffdfe;
+      --text: #241b22;
+      --text-soft: #4a3d47;
+      --muted: #7a6b76;
+      --line: #e0d4dc;
+      --accent: #6b2d5c;
+      --accent-2: #c0843a;
+      --link: #4b4fa0;
+      --shadow: rgba(50, 20, 45, 0.08);
+      --serif-display: 'Libre Baskerville', Georgia, serif;
+      --serif: 'Source Serif 4', Georgia, serif;
+      --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    }
+    :root[data-theme="dark"] {
+      --bg: #161115;
+      --bg-alt: #1d161c;
+      --surface: #221a20;
+      --text: #ede3ea;
+      --text-soft: #cbbcc6;
+      --muted: #988a94;
+      --line: #3a2e37;
+      --accent: #d68cc4;
+      --accent-2: #dcab62;
+      --link: #a3a8ec;
+      --shadow: rgba(0, 0, 0, 0.4);
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      transition: background .3s, color .3s;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { color: var(--accent); text-decoration: underline; }
+    img { max-width: 100%; display: block; }
+
+    /* Navigation */
+    .nav {
+      position: sticky; top: 0; z-index: 50;
+      background: color-mix(in srgb, var(--bg) 92%, transparent);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav-inner {
+      max-width: 1080px; margin: 0 auto; padding: 0 1.25rem;
+      height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .brand { font-family: var(--serif-display); font-size: 1.15rem; color: var(--text); }
+    .brand:hover { text-decoration: none; color: var(--accent); }
+    .nav-links { display: flex; gap: 1.25rem; list-style: none; align-items: center; }
+    .nav-links a { color: var(--text-soft); font-size: .95rem; }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+    .icon-btn {
+      background: none; border: 1px solid var(--line); color: var(--text-soft);
+      width: 34px; height: 34px; border-radius: 50%; cursor: pointer; font-size: 1rem;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .menu-btn { display: none; }
+
+    /* Layout */
+    main { max-width: 1080px; margin: 0 auto; padding: 0 1.25rem; }
+    section { padding: 4rem 0 1rem; }
+    .section-title {
+      font-family: var(--serif-display); font-weight: 400; font-size: 1.7rem;
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1.75rem;
+    }
+    .section-title::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+    .section-title .num { font-family: var(--mono); font-size: .8rem; color: var(--accent-2); }
+
+    /* Hero */
+    .hero {
+      display: grid; grid-template-columns: 240px 1fr; gap: 3rem; align-items: center;
+      margin-top: 2.5rem; padding: 2.5rem 2.75rem;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+      border-top: 4px solid var(--accent);
+      box-shadow: 0 10px 30px var(--shadow);
+    }
+    .portrait {
+      width: 240px; aspect-ratio: 4 / 5; object-fit: cover;
+      border: 1px solid var(--line); padding: 6px; background: var(--surface);
+      box-shadow: 6px 6px 0 var(--line);
+    }
+    .hero h1 { font-family: var(--serif-display); font-weight: 400; font-size: clamp(2rem, 5vw, 2.9rem); line-height: 1.2; }
+    .hero .role { font-size: 1.2rem; color: var(--accent); margin-top: .4rem; }
+    .hero .affil { color: var(--text-soft); }
+    .hero .interests { margin-top: 1rem; font-style: italic; color: var(--muted); }
+    .hero-links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+    .pill {
+      font-family: var(--mono); font-size: .8rem; padding: .35rem .85rem;
+      border: 1px solid var(--line); border-radius: 999px; color: var(--text-soft); background: var(--surface);
+    }
+    .pill:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* News */
+    .news { list-style: none; border-left: 2px solid var(--accent-2); padding-left: 1.25rem; }
+    .news li { margin-bottom: .6rem; }
+    .news time { font-family: var(--mono); font-size: .8rem; color: var(--muted); margin-right: .6rem; }
+
+    /* Timeline (education / experience) */
+    .timeline { list-style: none; position: relative; padding-left: 1.5rem; }
+    .timeline::before { content: ''; position: absolute; left: 4px; top: .5rem; bottom: .5rem; width: 1px; background: var(--line); }
+    .timeline li { position: relative; margin-bottom: 1.6rem; }
+    .timeline li::before {
+      content: ''; position: absolute; left: -1.5rem; top: .55rem;
+      width: 9px; height: 9px; border-radius: 50%; background: var(--bg); border: 2px solid var(--accent);
+    }
+    .item-head { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .item-title { font-weight: 600; }
+    .item-date { font-family: var(--mono); font-size: .8rem; color: var(--muted); white-space: nowrap; }
+    .item-org { color: var(--accent); }
+    .item-note { color: var(--text-soft); font-size: 1rem; }
+
+    /* Cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
+    .card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+      padding: 1.2rem 1.3rem; transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px var(--shadow); }
+    .card .code { font-family: var(--mono); font-size: .78rem; color: var(--accent-2); }
+    .card h3 { font-size: 1.1rem; font-weight: 600; margin: .2rem 0 .35rem; }
+    .card p { font-size: .98rem; color: var(--text-soft); }
+
+    /* Publications */
+    .pub-group { font-family: var(--mono); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 1.5rem 0 .75rem; }
+    .pubs { list-style: none; counter-reset: pub; }
+    .pubs li { counter-increment: pub; position: relative; padding-left: 2.6rem; margin-bottom: 1.1rem; }
+    .pubs li::before {
+      content: '[' counter(pub) ']'; position: absolute; left: 0; top: .1rem;
+      font-family: var(--mono); font-size: .8rem; color: var(--accent);
+    }
+    .pub-title { font-weight: 600; }
+    .pub-authors .me { text-decoration: underline; text-underline-offset: 3px; }
+    .pub-venue { font-style: italic; color: var(--text-soft); }
+
+    .pill i { margin-right: .4rem; font-size: .95em; }
+    .pub-venue a { font-style: normal; font-family: var(--mono); font-size: .78rem; margin-left: .35rem; white-space: nowrap; }
+    .icon-row { display: flex; flex-wrap: wrap; gap: .9rem; font-size: 1.45rem; }
+    .icon-row a { color: var(--text-soft); }
+    .icon-row a:hover { color: var(--accent); text-decoration: none; }
+    .card.video { padding: 0; overflow: hidden; color: var(--text); }
+    .card.video:hover { text-decoration: none; }
+    .card.video img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+    .card.video h3 { padding: .8rem 1.1rem 1rem; font-size: 1rem; }
+    .card.video h3 i { color: #e62117; margin-right: .45rem; }
+    .portrait { object-position: 50% 20%; }
+
+    /* Contact */
+    .contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+    .contact h3 { font-family: var(--mono); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 500; margin-bottom: .4rem; }
+
+    footer {
+      max-width: 1080px; margin: 4rem auto 0; padding: 1.5rem 1.25rem 2.5rem;
+      border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; text-align: center;
+    }
+
+    /* Mobile */
+    @media (max-width: 820px) {
+      .menu-btn { display: inline-flex; }
+      .nav-links {
+        display: none; position: absolute; top: 60px; left: 0; right: 0;
+        flex-direction: column; align-items: flex-start; gap: .9rem;
+        background: var(--bg); border-bottom: 1px solid var(--line); padding: 1rem 1.25rem 1.25rem;
+      }
+      .nav-links.open { display: flex; }
+      .hero { grid-template-columns: 1fr; gap: 1.75rem; margin-top: 1.5rem; padding: 1.75rem 1.25rem; }
+      .portrait { width: 180px; }
+      section { padding-top: 3rem; }
+    }
+  </style>
+  <script>
+    // Apply saved/system theme before paint to avoid a flash.
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#top">Asha K. Dond</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#talks">Talks</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div>
+        <button class="icon-btn" id="themeBtn" aria-label="Toggle dark mode">◐</button>
+        <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <header class="hero">
+      <img class="portrait" src="assets/images/profile.jpg" alt="Photo of Asha K. Dond">
+      <div>
+        <h1>Asha K. Dond</h1>
+        <p class="role">Associate Professor</p>
+        <p class="affil">School of Mathematics, Indian Institute of Science Education and Research (IISER) Thiruvananthapuram</p>
+        <p class="interests">Finite element methods · Adaptive FEM · Stabilized methods · Optimal control problems</p>
+        <div class="hero-links">
+          <!-- TODO: add CV as assets/files/CV.pdf, then uncomment -->
+          <!-- <a class="pill" href="assets/files/CV.pdf"><i class="fa-solid fa-file-lines"></i>CV</a> -->
+          <a class="pill" href="https://scholar.google.co.in/citations?user=gCGJdbgAAAAJ&amp;hl=en"><i class="ai ai-google-scholar"></i>Google Scholar</a>
+          <a class="pill" href="https://orcid.org/0000-0003-1663-334X"><i class="ai ai-orcid"></i>ORCID</a>
+          <a class="pill" href="https://mathscinet.ams.org/mathscinet/search/author.html?mrauthid=1166101"><i class="fa-solid fa-square-root-variable"></i>MathSciNet</a>
+          <a class="pill" href="https://www.researchgate.net/profile/Asha_Dond"><i class="ai ai-researchgate"></i>ResearchGate</a>
+          <a class="pill" href="https://www.iisertvm.ac.in/faculty/ashadon"><i class="fa-solid fa-building-columns"></i>IISER TVM</a>
+          <a class="pill" href="mailto:ashadond@iisertvm.ac.in"><i class="fa-solid fa-envelope"></i>Email</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== About ===== -->
+    <section id="about">
+      <h2 class="section-title"><span class="num">01</span>About</h2>
+      <!-- TODO: Asha to review/rewrite this bio -->
+      <p>
+        I am an Associate Professor in the School of Mathematics at the
+        <a href="https://www.iisertvm.ac.in/">Indian Institute of Science Education and Research (IISER) Thiruvananthapuram</a>.
+        I received my Ph.D. in Mathematics from the <a href="https://www.iitb.ac.in/">Indian Institute of Technology Bombay</a>.
+        Before joining IISER Thiruvananthapuram, I was an NBHM and National Post-Doctoral Fellow at the
+        <a href="https://math.iisc.ac.in/">Department of Mathematics, Indian Institute of Science, Bangalore</a>,
+        and a Post-Doctoral Fellow at Humboldt-Universität zu Berlin.
+      </p>
+      <p style="margin-top:1rem">
+        My research is on finite element methods for partial differential equations, in particular
+        adaptive finite element methods and their convergence analysis, stabilized methods for
+        convection–diffusion problems, and finite element methods for optimal control problems.
+      </p>
+      <h3 class="pub-group">Recent</h3>
+      <ul class="news">
+        <li><time>2026</time>“Adaptive Crouzeix–Raviart finite elements for a non-convex Ginzburg–Landau model for nematic liquid crystals” published in <em>Computer Methods in Applied Mechanics and Engineering</em>.</li>
+        <li><time>2025</time>“Hybrid CBSQI-WENO schemes for convection diffusion problems” published in <em>International Journal for Numerical Methods in Fluids</em>.</li>
+        <li><time>2024</time>“Convergence of adaptive Crouzeix–Raviart and Morley FEM for distributed optimal control problems” published in <em>Computational Methods in Applied Mathematics</em>.</li>
+      </ul>
+    </section>
+
+    <!-- ===== Research ===== -->
+    <section id="research">
+      <h2 class="section-title"><span class="num">02</span>Research Interests</h2>
+      <div class="cards">
+        <div class="card"><h3>Finite element methods</h3><p>Finite element methods for elliptic partial differential equations.</p></div>
+        <div class="card"><h3>Adaptive FEM</h3><p>Adaptive finite element methods and their convergence analysis.</p></div>
+        <div class="card"><h3>Stabilized methods</h3><p>Stabilized finite element methods for convection–diffusion problems.</p></div>
+        <div class="card"><h3>Optimal control</h3><p>Finite element methods for optimal control problems.</p></div>
+      </div>
+    </section>
+
+    <!-- ===== Education ===== -->
+    <section id="education">
+      <h2 class="section-title"><span class="num">03</span>Education</h2>
+      <ul class="timeline">
+        <li>
+          <!-- TODO: add years -->
+          <div class="item-head"><span class="item-title">Ph.D. in Mathematics</span><span class="item-date"></span></div>
+          <div class="item-org">Indian Institute of Technology Bombay</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">M.Sc. in Mathematics</span><span class="item-date"></span></div>
+          <div class="item-org">K.T.H.M. College, Nashik, Maharashtra</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== Experience ===== -->
+    <section id="experience">
+      <h2 class="section-title"><span class="num">04</span>Experience</h2>
+      <ul class="timeline">
+        <li>
+          <!-- TODO: add start year -->
+          <div class="item-head"><span class="item-title">Associate Professor</span><span class="item-date">Present</span></div>
+          <div class="item-org">School of Mathematics, IISER Thiruvananthapuram</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">National Post-Doctoral Fellow</span><span class="item-date">Mar 2019 – Jan 2020</span></div>
+          <div class="item-org">Department of Mathematics, Indian Institute of Science, Bangalore</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">NBHM Post-Doctoral Fellow</span><span class="item-date">Aug 2016 – Mar 2019</span></div>
+          <div class="item-org">Department of Mathematics, Indian Institute of Science, Bangalore</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">Post-Doctoral Fellow</span><span class="item-date">Apr 2016 – Jul 2016</span></div>
+          <div class="item-org">Institut für Mathematik, Humboldt-Universität zu Berlin, Germany</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">Research Associate</span><span class="item-date">Dec 2015 – Apr 2016</span></div>
+          <div class="item-org">Department of Mathematics, Indian Institute of Technology Bombay</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">Ph.D. Internship</span><span class="item-date">Sep 2014 – Jun 2015</span></div>
+          <div class="item-org">Interdisciplinary Center for Scientific Computing (IWR), Heidelberg University, Germany</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== Publications ===== -->
+    <section id="publications">
+      <h2 class="section-title"><span class="num">05</span>Publications</h2>
+
+      <h3 class="pub-group">Journal articles</h3>
+      <ol class="pubs">
+        <li>
+          <div class="pub-authors">Carsten Carstensen, <span class="me">Asha K. Dond</span>, Ruma R. Maity, Neela Nataraj, Lara Théallier.</div>
+          <div class="pub-title">Adaptive Crouzeix–Raviart finite elements for a non-convex Ginzburg–Landau model for nematic liquid crystals.</div>
+          <div class="pub-venue">Computer Methods in Applied Mechanics and Engineering, 452, Part A, 2026. <a href="https://doi.org/10.1016/j.cma.2025.118646"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors">Prasanta Kumar Barik, <span class="me">Asha K. Dond</span>, Amjad Hasan, Rakesh Kumar.</div>
+          <div class="pub-title">Hybrid CBSQI-WENO schemes for convection diffusion problems.</div>
+          <div class="pub-venue">International Journal for Numerical Methods in Fluids, 2025. <a href="https://doi.org/10.1002/fld.5380"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors"><span class="me">Asha K. Dond</span>, Neela Nataraj, Subham Nayak.</div>
+          <div class="pub-title">Convergence of adaptive Crouzeix–Raviart and Morley FEM for distributed optimal control problems.</div>
+          <div class="pub-venue">Computational Methods in Applied Mathematics, 24(3), 599–622, 2024. <a href="https://doi.org/10.1515/cmam-2023-0083"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors">J. L. Dalby, Apala Majumdar, Y. Wu, <span class="me">Asha K. Dond</span>.</div>
+          <div class="pub-title">Stochastic effects on solution landscapes for nematic liquid crystals.</div>
+          <div class="pub-venue">Liquid Crystals, 1–21, 2024. <a href="https://doi.org/10.1080/02678292.2023.2294960"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors">K. R. Arun, <span class="me">Asha K. Dond</span>, Rakesh Kumar.</div>
+          <div class="pub-title">WENO smoothness indicator based troubled-cell indicator for hyperbolic conservation laws.</div>
+          <div class="pub-venue">International Journal for Numerical Methods in Fluids, 96(1), 44–86, 2024. <a href="https://doi.org/10.1002/fld.5237"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors">Sudipto Chowdhury, <span class="me">Asha K. Dond</span>, Neela Nataraj, Devika Shylaja.</div>
+          <div class="pub-title">A posteriori error analysis for a distributed optimal control problem governed by the von Kármán equations.</div>
+          <div class="pub-venue">ESAIM: Mathematical Modelling and Numerical Analysis, 56(5), 1655–1686, 2022. <a href="https://www.esaim-m2an.org/articles/m2an/abs/2022/05/m2an210196/m2an210196.html"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors"><span class="me">Asha K. Dond</span>, Rakesh Kumar.</div>
+          <div class="pub-title">Finite difference modified WENO schemes for hyperbolic conservation laws with non-convex flux.</div>
+          <div class="pub-venue">International Journal for Numerical Methods in Fluids, 93, 3005–3019, 2021. <a href="https://onlinelibrary.wiley.com/doi/10.1002/fld.5020"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors">Carsten Carstensen, <span class="me">Asha K. Dond</span>, Hella Rabus.</div>
+          <div class="pub-title">Quasi-optimality of adaptive mixed FEMs for general second-order linear elliptic problems.</div>
+          <div class="pub-venue">Computational Methods in Applied Mathematics, 19(2), 233–250, 2019. <a href="https://www.degruyter.com/view/j/cmam.2019.19.issue-2/cmam-2019-0034/cmam-2019-0034.xml"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors">Rahul Biswas, <span class="me">Asha K. Dond</span>, Thirupathi Gudi.</div>
+          <div class="pub-title">Edge patch-wise local projection stabilized nonconforming FEM for the Oseen problem.</div>
+          <div class="pub-venue">Computational Methods in Applied Mathematics, 19(2), 189–214, 2019. <a href="https://www.degruyter.com/view/j/cmam.ahead-of-print/cmam-2018-0020/cmam-2018-0020.xml"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors"><span class="me">Asha K. Dond</span>, Thirupathi Gudi.</div>
+          <div class="pub-title">Patch-wise local projection stabilized finite element methods for convection–diffusion problems.</div>
+          <div class="pub-venue">Numerical Methods for Partial Differential Equations, 35(2), 638–663, 2019. <a href="https://onlinelibrary.wiley.com/doi/full/10.1002/num.22317"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors"><span class="me">Asha K. Dond</span>, Thirupathi Gudi, R. C. Sau.</div>
+          <div class="pub-title">An error analysis of discontinuous finite element methods for the optimal control problems governed by Stokes equation.</div>
+          <div class="pub-venue">Numerical Functional Analysis and Optimization, 40(4), 421–460, 2019. <a href="https://www.tandfonline.com/doi/full/10.1080/01630563.2018.1538158"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors">Carsten Carstensen, <span class="me">Asha K. Dond</span>, Neela Nataraj, Amiya K. Pani.</div>
+          <div class="pub-title">Three first-order finite volume element methods for the Stokes equations.</div>
+          <div class="pub-venue">SIAM Journal on Numerical Analysis, 56(4), 2648–2671, 2018. <a href="https://epubs.siam.org/doi/abs/10.1137/17M1134135"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors"><span class="me">Asha K. Dond</span>, Amiya K. Pani.</div>
+          <div class="pub-title">A priori and a posteriori estimates of conforming and mixed FEM for a Kirchhoff equation of elliptic type.</div>
+          <div class="pub-venue">Computational Methods in Applied Mathematics, 17(2), 217–236, 2017. <a href="https://www.degruyter.com/view/journals/cmam/17/2/article-p217.xml"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors"><span class="me">Asha K. Dond</span>, Neela Nataraj, Amiya K. Pani.</div>
+          <div class="pub-title">Convergence of an adaptive lowest-order Raviart–Thomas element method for general second order linear elliptic problems.</div>
+          <div class="pub-venue">IMA Journal of Numerical Analysis, 37(2), 832–860, 2017. <a href="https://academic.oup.com/imajna/article/37/2/832/2669977"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors"><span class="me">Asha K. Dond</span>, Thirupathi Gudi, Neela Nataraj.</div>
+          <div class="pub-title">On a nonconforming finite element approximation for optimal control of an obstacle problem.</div>
+          <div class="pub-venue">Computational Methods in Applied Mathematics, 16(4), 653–666, 2016. <a href="https://www.degruyter.com/view/j/cmam.2016.16.issue-4/cmam-2016-0024/cmam-2016-0024.xml"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+        <li>
+          <div class="pub-authors">Carsten Carstensen, <span class="me">Asha K. Dond</span>, Neela Nataraj, Amiya K. Pani.</div>
+          <div class="pub-title">Error analysis of nonconforming and mixed FEMs for second-order linear non-selfadjoint and indefinite elliptic problems.</div>
+          <div class="pub-venue">Numerische Mathematik, 133(3), 557–597, 2016. <a href="https://link.springer.com/article/10.1007/s00211-015-0755-0"><i class="fa-solid fa-file-lines"></i> Journal</a></div>
+        </li>
+      </ol>
+
+      <h3 class="pub-group">Conference proceedings</h3>
+      <ol class="pubs">
+        <li>
+          <div class="pub-authors"><span class="me">Asha K. Dond</span>, Thirupathi Gudi.</div>
+          <div class="pub-title">A posteriori error analysis for patch-wise local projection stabilized FEM for convection–diffusion problem.</div>
+          <div class="pub-venue">XVII International Conference on Hyperbolic Problems: Theory, Numerics, Applications (HYP 2018).</div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ===== Talks ===== -->
+    <section id="talks">
+      <h2 class="section-title"><span class="num">06</span>Invited Talks &amp; Conferences</h2>
+      <ul class="timeline">
+        <li>
+          <div class="item-head"><span class="item-title">“Convergence of adaptive mixed FEMs for linear elliptic problems based on separate marking”</span><span class="item-date">Jul 2019</span></div>
+          <div class="item-org">9th International Congress on Industrial and Applied Mathematics (ICIAM 2019), Valencia, Spain</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">“Stabilized finite element methods for convection–diffusion problems”</span><span class="item-date">Mar 2019</span></div>
+          <div class="item-org">In-house Symposium, Department of Mathematics, IISc Bangalore</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">“Unified error analysis of finite element methods for the optimal control problems governed by Stokes equation”</span><span class="item-date">Mar 2019</span></div>
+          <div class="item-org">Second National Conference on Control and Inverse Problems, Central University of Tamil Nadu, Thiruvarur</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">“Patch-wise local projection nonconforming FEM for convection–diffusion problem”</span><span class="item-date">Jun 2018</span></div>
+          <div class="item-org">XVII International Conference on Hyperbolic Problems (HYP 2018), University Park, Pennsylvania, USA</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">“Edge patch-wise local projection nonconforming FEM for convection–diffusion problem”</span><span class="item-date">Jul 2017</span></div>
+          <div class="item-org">IWM Annual Conference 2017, Indian Institute of Science, Bangalore</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">“Patchwise local projection stabilization for convection–diffusion problem”</span><span class="item-date">Jun 2017</span></div>
+          <div class="item-org">Recent Advances in PDE: Theory, Computations and Application, IIT Bombay</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">“Quasi-optimality of adaptive mixed finite element methods”</span><span class="item-date">Mar 2017</span></div>
+          <div class="item-org">Department of Mathematics, IISc Bangalore</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">“Expanded mixed finite element methods for a nonlocal problem of elliptic type”</span><span class="item-date">Dec 2016</span></div>
+          <div class="item-org">International Conference on Recent Advances on Theoretical and Computational PDEs with Applications, Panjab University, Chandigarh</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">“Error analysis of mixed FEMs for general second order linear elliptic problems”</span><span class="item-date">May 2016</span></div>
+          <div class="item-org">14th European Finite Element Fair, Bonn, Germany</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">“Mixed finite element method for a class of general second order linear elliptic problems”</span><span class="item-date">Dec 2015</span></div>
+          <div class="item-org">International Conference on Current Trends in PDEs: Theory and Computation, South Asian University, New Delhi</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">“Error analysis of mixed finite element methods for the general second-order linear elliptic problem”</span><span class="item-date">Aug 2015</span></div>
+          <div class="item-org">Department Symposium, IIT Bombay</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">“Convergence of adaptive mixed finite element methods for second order elliptic problems”</span><span class="item-date">Aug 2015</span></div>
+          <div class="item-org">International Congress on Industrial and Applied Mathematics (ICIAM 2015), Beijing, China</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">“Convergence of an adaptive mixed finite element method for general second order linear elliptic problems”</span><span class="item-date">Nov 2014</span></div>
+          <div class="item-org">Institut für Mathematik, Humboldt-Universität zu Berlin, Germany</div>
+        </li>
+        <li>
+          <div class="item-head"><span class="item-title">“Error analysis of nonconforming and mixed FEMs for second-order linear non-selfadjoint and indefinite elliptic problems”</span><span class="item-date">Oct 2014</span></div>
+          <div class="item-org">IWR, Heidelberg University, Germany</div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== Teaching ===== -->
+    <section id="teaching">
+      <h2 class="section-title"><span class="num">07</span>Teaching</h2>
+      <!-- TODO: add courses taught at IISER Thiruvananthapuram -->
+      <div class="cards">
+        <div class="card">
+          <div class="code">Workshop · Nov 2018</div>
+          <h3>MATLAB lab (Teaching Assistant)</h3>
+          <p>Degree College Teachers Training Programme in Mathematics, IISc Challakere Campus, Chitradurga.</p>
+        </div>
+        <div class="card">
+          <div class="code">Workshop · Oct 2018</div>
+          <h3>MATLAB lab sessions</h3>
+          <p>An Introduction to MATLAB and Numerical Computations, Department of Mathematics, Central University of Kerala.</p>
+        </div>
+        <div class="card">
+          <div class="code">Workshop · Jul–Aug 2018</div>
+          <h3>MATLAB lab sessions</h3>
+          <p>IST PDE: Theory and Computation, IISc Bangalore.</p>
+        </div>
+        <div class="card">
+          <div class="code">Workshop · May–Jun 2014</div>
+          <h3>MATLAB lab sessions</h3>
+          <p>Advanced Level Training Program on Differential Equations, IISER Thiruvananthapuram.</p>
+        </div>
+        <div class="card">
+          <div class="code">Jan 2011 – Dec 2013</div>
+          <h3>Teaching Assistant</h3>
+          <p>Undergraduate courses, Indian Institute of Technology Bombay.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section id="contact">
+      <h2 class="section-title"><span class="num">08</span>Contact</h2>
+      <div class="contact">
+        <div>
+          <h3>Email &amp; Phone</h3>
+          <p><a href="mailto:ashadond@iisertvm.ac.in"><i class="fa-solid fa-envelope"></i> ashadond@iisertvm.ac.in</a><br>
+             <i class="fa-solid fa-phone"></i> +91 471 277 8247</p>
+        </div>
+        <div>
+          <h3>Address</h3>
+          <p>School of Mathematics<br>Indian Institute of Science Education and Research<br>Maruthamala P.O., Vithura<br>Thiruvananthapuram – 695551, Kerala, India</p>
+        </div>
+        <div>
+          <h3>Elsewhere</h3>
+          <p class="icon-row">
+            <a href="https://scholar.google.co.in/citations?user=gCGJdbgAAAAJ&amp;hl=en" title="Google Scholar" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+            <a href="https://orcid.org/0000-0003-1663-334X" title="ORCID" aria-label="ORCID"><i class="ai ai-orcid"></i></a>
+            <a href="https://mathscinet.ams.org/mathscinet/search/author.html?mrauthid=1166101" title="MathSciNet" aria-label="MathSciNet"><i class="fa-solid fa-square-root-variable"></i></a>
+            <a href="https://www.researchgate.net/profile/Asha_Dond" title="ResearchGate" aria-label="ResearchGate"><i class="ai ai-researchgate"></i></a>
+            <a href="https://www.iisertvm.ac.in/faculty/ashadon" title="IISER TVM faculty page" aria-label="IISER TVM faculty page"><i class="fa-solid fa-building-columns"></i></a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year"></span> Asha K. Dond
+  </footer>
+
+
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    document.getElementById('themeBtn').addEventListener('click', function () {
+      var root = document.documentElement;
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+
+    var links = document.getElementById('navLinks');
+    document.getElementById('menuBtn').addEventListener('click', function () {
+      links.classList.toggle('open');
+    });
+    links.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') links.classList.remove('open');
+    });
+  </script>
+</body>
+</html>
