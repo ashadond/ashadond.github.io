@@ -163,8 +163,6 @@
     .people td:nth-child(3) { font-family: var(--mono); font-size: .8rem; color: var(--muted); padding-top: .75rem; white-space: nowrap; }
     .people td:nth-child(4) { color: var(--text-soft); font-size: .95rem; }
     .people td.none { color: var(--muted); }
-    .people.courses th:nth-child(1) { width: 38%; } .people.courses th:nth-child(2) { width: 24%; } .people.courses th:nth-child(3) { width: 16%; }
-    .people.courses td:nth-child(2) { white-space: normal; font-family: var(--mono); font-size: .8rem; padding-top: .75rem; }
     @media (max-width: 640px) {
       .people, .people tbody, .people tr, .people td { display: block; width: 100%; }
       .people thead { display: none; }
@@ -746,22 +744,63 @@
     <section id="teaching">
       <h2 class="section-title"><span class="num">08</span>Teaching</h2>
       <h3 class="pub-group">Courses at IISER Thiruvananthapuram</h3>
-      <table class="people courses">
-        <thead><tr><th>Course</th><th>Code</th><th>Semester</th><th>Students</th></tr></thead>
-        <tbody>
-          <tr><td>Theory of Ordinary Differential Equations</td><td>MAT 324</td><td>Vasant 2025</td><td>48 · Major</td></tr>
-          <tr><td>Finite Element Methods</td><td>I2M423 / MAT4205 / MAT6205</td><td>Vasant 2025</td><td>11 · Major</td></tr>
-          <tr><td>Numerical Analysis</td><td>MAT 314</td><td>Varsha 2024</td><td>38 · Major</td></tr>
-          <tr><td>Finite Element Methods<span class="co">Letter of appreciation from the Director</span></td><td>I2M423 / MAT4205 / MAT6205</td><td>Vasant 2024</td><td>21 · Major</td></tr>
-          <tr><td>Numerical Analysis<span class="co">Letter of appreciation from the Director</span></td><td>MAT 314</td><td>Varsha 2023</td><td>39 · Major</td></tr>
-          <tr><td>Scientific Computing</td><td>DSC322 / I2M321 / MAT3021</td><td>Vasant 2023</td><td>77 · Major</td></tr>
-          <tr><td>Numerical Solutions of Differential Equations</td><td>I2M4102 / MAT511B / MAT6105</td><td>Varsha 2022</td><td>18 · Elective</td></tr>
-          <tr><td>Introduction to Linear Algebra<span class="co">Letter of appreciation from the Director</span></td><td>MAT 121</td><td>Vasant 2022</td><td>231 · Foundation</td></tr>
-          <tr><td>Linear Algebra</td><td>MAT/MSM 313</td><td>Varsha 2021</td><td>79 · Major</td></tr>
-          <tr><td>Theory of Ordinary Differential Equations</td><td>MAT 324</td><td>Vasant 2021</td><td>28 · Major</td></tr>
-          <tr><td>Numerical Analysis</td><td>MAT 314</td><td>Varsha 2020</td><td>28 · Major</td></tr>
-        </tbody>
-      </table>
+      <div class="cards">
+        <div class="card">
+          <div class="code">Vasant 2025 · MAT 324</div>
+          <h3>Theory of Ordinary Differential Equations</h3>
+          <p>48 students · Major course</p>
+        </div>
+        <div class="card">
+          <div class="code">Vasant 2025 · I2M423 / MAT4205 / MAT6205</div>
+          <h3>Finite Element Methods</h3>
+          <p>11 students · Major course</p>
+        </div>
+        <div class="card">
+          <div class="code">Varsha 2024 · MAT 314</div>
+          <h3>Numerical Analysis</h3>
+          <p>38 students · Major course</p>
+        </div>
+        <div class="card">
+          <div class="code">Vasant 2024 · I2M423 / MAT4205 / MAT6205</div>
+          <h3>Finite Element Methods</h3>
+          <p>21 students · Major course<br><em>Letter of appreciation from the Director</em></p>
+        </div>
+        <div class="card">
+          <div class="code">Varsha 2023 · MAT 314</div>
+          <h3>Numerical Analysis</h3>
+          <p>39 students · Major course<br><em>Letter of appreciation from the Director</em></p>
+        </div>
+        <div class="card">
+          <div class="code">Vasant 2023 · DSC322 / I2M321 / MAT3021</div>
+          <h3>Scientific Computing</h3>
+          <p>77 students · Major course</p>
+        </div>
+        <div class="card">
+          <div class="code">Varsha 2022 · I2M4102 / MAT511B / MAT6105</div>
+          <h3>Numerical Solutions of Differential Equations</h3>
+          <p>18 students · Elective course</p>
+        </div>
+        <div class="card">
+          <div class="code">Vasant 2022 · MAT 121</div>
+          <h3>Introduction to Linear Algebra</h3>
+          <p>231 students · Foundation course<br><em>Letter of appreciation from the Director</em></p>
+        </div>
+        <div class="card">
+          <div class="code">Varsha 2021 · MAT/MSM 313</div>
+          <h3>Linear Algebra</h3>
+          <p>79 students · Major course</p>
+        </div>
+        <div class="card">
+          <div class="code">Vasant 2021 · MAT 324</div>
+          <h3>Theory of Ordinary Differential Equations</h3>
+          <p>28 students · Major course</p>
+        </div>
+        <div class="card">
+          <div class="code">Varsha 2020 · MAT 314</div>
+          <h3>Numerical Analysis</h3>
+          <p>28 students · Major course</p>
+        </div>
+      </div>
       <h3 class="pub-group">Workshops &amp; earlier teaching</h3>
       <div class="cards">
         <div class="card">
