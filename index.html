@@ -185,15 +185,20 @@
 
     /* Publications */
     .pub-group { font-family: var(--mono); font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 1.5rem 0 .75rem; }
-    .pubs { list-style: none; counter-reset: pub; }
-    .pubs li { counter-increment: pub; position: relative; padding-left: 2.6rem; margin-bottom: 1.1rem; }
-    .pubs li::before {
-      content: '[' counter(pub) ']'; position: absolute; left: 0; top: .1rem;
-      font-family: var(--mono); font-size: .8rem; color: var(--accent);
+    .pubs { list-style: none; counter-reset: pub; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem; }
+    .pubs li {
+      counter-increment: pub; display: flex; flex-direction: column;
+      background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
+      padding: 1.2rem 1.3rem; transition: transform .2s, box-shadow .2s;
     }
-    .pub-title { font-weight: 600; }
-    .pub-authors .me { text-decoration: underline; text-underline-offset: 3px; }
-    .pub-venue { font-style: italic; color: var(--text-soft); }
+    .pubs li:hover { transform: translateY(-2px); box-shadow: 0 6px 18px var(--shadow); }
+    .pubs li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+    .pubs li::before { content: '[' counter(pub) ']'; order: 0; font-family: var(--mono); font-size: .78rem; color: var(--accent-2); margin-bottom: .3rem; }
+    .pub-title { order: 1; font-weight: 600; font-size: 1.05rem; line-height: 1.4; margin-bottom: .4rem; }
+    .pub-authors { order: 2; font-size: .95rem; color: var(--text-soft); }
+    .pub-authors .me { text-decoration: underline; text-underline-offset: 3px; color: var(--text); }
+    .pub-venue { order: 3; font-style: italic; color: var(--text-soft); font-size: .95rem; margin-top: auto; padding-top: .6rem; }
+    @media (max-width: 640px) { .pubs { grid-template-columns: 1fr; } }
 
     .pill i { margin-right: .4rem; font-size: .95em; }
     .pub-venue a { font-style: normal; font-family: var(--mono); font-size: .78rem; margin-left: .35rem; white-space: nowrap; }
