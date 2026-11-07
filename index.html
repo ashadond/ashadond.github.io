@@ -150,6 +150,8 @@
     .people td:nth-child(3) { font-family: var(--mono); font-size: .8rem; color: var(--muted); padding-top: .75rem; white-space: nowrap; }
     .people td:nth-child(4) { color: var(--text-soft); font-size: .95rem; }
     .people td.none { color: var(--muted); }
+    .people.courses th:nth-child(1) { width: 38%; } .people.courses th:nth-child(2) { width: 24%; } .people.courses th:nth-child(3) { width: 16%; }
+    .people.courses td:nth-child(2) { white-space: normal; font-family: var(--mono); font-size: .8rem; padding-top: .75rem; }
     @media (max-width: 640px) {
       .people, .people tbody, .people tr, .people td { display: block; width: 100%; }
       .people thead { display: none; }
@@ -620,7 +622,24 @@
     <!-- ===== Teaching ===== -->
     <section id="teaching">
       <h2 class="section-title"><span class="num">09</span>Teaching</h2>
-      <!-- TODO: add courses taught at IISER Thiruvananthapuram -->
+      <h3 class="pub-group">Courses at IISER Thiruvananthapuram</h3>
+      <table class="people courses">
+        <thead><tr><th>Course</th><th>Code</th><th>Semester</th><th>Students</th></tr></thead>
+        <tbody>
+          <tr><td>Theory of Ordinary Differential Equations</td><td>MAT 324</td><td>Vasant 2025</td><td>48 · Major</td></tr>
+          <tr><td>Finite Element Methods</td><td>I2M423 / MAT4205 / MAT6205</td><td>Vasant 2025</td><td>11 · Major</td></tr>
+          <tr><td>Numerical Analysis</td><td>MAT 314</td><td>Varsha 2024</td><td>38 · Major</td></tr>
+          <tr><td>Finite Element Methods<span class="co">Letter of appreciation from the Director</span></td><td>I2M423 / MAT4205 / MAT6205</td><td>Vasant 2024</td><td>21 · Major</td></tr>
+          <tr><td>Numerical Analysis<span class="co">Letter of appreciation from the Director</span></td><td>MAT 314</td><td>Varsha 2023</td><td>39 · Major</td></tr>
+          <tr><td>Scientific Computing</td><td>DSC322 / I2M321 / MAT3021</td><td>Vasant 2023</td><td>77 · Major</td></tr>
+          <tr><td>Numerical Solutions of Differential Equations</td><td>I2M4102 / MAT511B / MAT6105</td><td>Varsha 2022</td><td>18 · Elective</td></tr>
+          <tr><td>Introduction to Linear Algebra<span class="co">Letter of appreciation from the Director</span></td><td>MAT 121</td><td>Vasant 2022</td><td>231 · Foundation</td></tr>
+          <tr><td>Linear Algebra</td><td>MAT/MSM 313</td><td>Varsha 2021</td><td>79 · Major</td></tr>
+          <tr><td>Theory of Ordinary Differential Equations</td><td>MAT 324</td><td>Vasant 2021</td><td>28 · Major</td></tr>
+          <tr><td>Numerical Analysis</td><td>MAT 314</td><td>Varsha 2020</td><td>28 · Major</td></tr>
+        </tbody>
+      </table>
+      <h3 class="pub-group">Workshops &amp; earlier teaching</h3>
       <div class="cards">
         <div class="card">
           <div class="code">Workshop · Nov 2018</div>
