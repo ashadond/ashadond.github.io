@@ -143,11 +143,13 @@
     .people th { font-family: var(--mono); font-size: .72rem; letter-spacing: .06em; text-transform: uppercase;
       color: var(--muted); font-weight: 500; text-align: left; padding: .5rem .75rem; border-bottom: 1px solid var(--accent); }
     .people td { padding: .6rem .75rem; border-bottom: 1px solid var(--line); vertical-align: top; }
-    .people th:nth-child(1) { width: 30%; } .people th:nth-child(2) { width: 18%; } .people th:nth-child(3) { width: 18%; }
+    .people th:nth-child(1) { width: 25%; } .people th:nth-child(2) { width: 17%; } .people th:nth-child(3) { width: 19%; }
     .people td:nth-child(1) { font-weight: 600; }
-    .people td:nth-child(2) { color: var(--accent); }
-    .people td:nth-child(3) { font-family: var(--mono); font-size: .82rem; color: var(--muted); padding-top: .75rem; }
+    .people td:nth-child(1) .co { display: block; font-weight: 400; font-size: .85rem; color: var(--muted); }
+    .people td:nth-child(2) { color: var(--accent); white-space: nowrap; }
+    .people td:nth-child(3) { font-family: var(--mono); font-size: .8rem; color: var(--muted); padding-top: .75rem; white-space: nowrap; }
     .people td:nth-child(4) { color: var(--text-soft); font-size: .95rem; }
+    .people td.none { color: var(--muted); }
     @media (max-width: 640px) {
       .people, .people tbody, .people tr, .people td { display: block; width: 100%; }
       .people thead { display: none; }
@@ -155,7 +157,7 @@
       .people td { border: 0; padding: 0; }
       .people td:nth-child(3) { grid-column: 2; grid-row: 1; text-align: right; padding-top: .15rem; }
       .people td:nth-child(2), .people td:nth-child(4) { grid-column: 1 / -1; }
-      .people td:nth-child(4):empty { display: none; }
+      .people td.none { display: none; }
     }
     .card {
       background: var(--surface); border: 1px solid var(--line); border-radius: 6px;
@@ -396,37 +398,40 @@
       <h2 class="section-title"><span class="num">06</span>People</h2>
       <h3 class="pub-group">Ph.D. &amp; Integrated Ph.D. students</h3>
       <table class="people">
-        <thead><tr><th>Name</th><th>Program</th><th>Period</th><th>Notes / Current position</th></tr></thead>
+        <thead><tr><th>Name</th><th>Program</th><th>Period</th><th>Subsequent position</th></tr></thead>
         <tbody>
-          <tr><td>Subham Nayak</td><td>Ph.D.</td><td>Thesis submitted</td><td></td></tr>
-          <tr><td>Tooba M. Shaikh</td><td>Integrated Ph.D.</td><td>Ongoing</td><td></td></tr>
+          <tr><td>Subham Nayak</td><td>Ph.D.</td><td>Aug 2020 – Nov 2025</td><td>Research Associate, IIT Bombay</td></tr>
+          <tr><td>Tooba M. Shaikh</td><td>Integrated Ph.D.</td><td>Aug 2020 – Ongoing</td><td class="none">—</td></tr>
         </tbody>
       </table>
       <h3 class="pub-group">Current BS-MS students</h3>
       <table class="people">
-        <thead><tr><th>Name</th><th>Program</th><th>Period</th><th>Notes / Current position</th></tr></thead>
+        <thead><tr><th>Name</th><th>Program</th><th>Period</th><th>Subsequent position</th></tr></thead>
         <tbody>
-          <tr><td>Shreya J.</td><td>BS-MS</td><td>Ongoing</td><td></td></tr>
-          <tr><td>Bindhia</td><td>BS-MS</td><td>Ongoing</td><td></td></tr>
+          <tr><td>Anusurya Suthar</td><td>BS-MS</td><td>Jun 2026 – Ongoing</td><td class="none">—</td></tr>
+          <tr><td>Aashique M. A.</td><td>BS-MS</td><td>Jun 2026 – Ongoing</td><td class="none">—</td></tr>
+          <tr><td>Manit Kishor</td><td>BS-MS</td><td>Jun 2026 – Ongoing</td><td class="none">—</td></tr>
         </tbody>
       </table>
       <h3 class="pub-group">Former BS-MS &amp; M.Sc. students</h3>
       <table class="people">
-        <thead><tr><th>Name</th><th>Program</th><th>Period</th><th>Notes / Current position</th></tr></thead>
+        <thead><tr><th>Name</th><th>Program</th><th>Period</th><th>Subsequent position</th></tr></thead>
         <tbody>
-          <tr><td>Asiya Anas</td><td>BS-MS</td><td>2025</td><td>Co-supervised with Prof. Thirupathi Gudi (IISc Bangalore)</td></tr>
-          <tr><td>Veenashree</td><td>BS-MS</td><td>2025</td><td></td></tr>
-          <tr><td>Arya</td><td>M.Sc.</td><td>2025</td><td></td></tr>
-          <tr><td>Preveena K. V.</td><td>BS-MS</td><td>2024</td><td></td></tr>
-          <tr><td>Kaushik Nambiar</td><td>BS-MS</td><td>2024</td><td></td></tr>
-          <tr><td>Priyanka Mohapatra</td><td>BS-MS</td><td>2023</td><td></td></tr>
-          <tr><td>Devika Santhosh</td><td>M.Sc.</td><td>2023</td><td></td></tr>
-          <tr><td>Adarsh Krishnan R.</td><td>BS-MS</td><td>2023</td><td>Co-supervised with Dr. Sheetal Dharmatti</td></tr>
-          <tr><td>Aadhya Krishnakumar</td><td>BS-MS</td><td>2023</td><td></td></tr>
-          <tr><td>Amjad Hasan P.</td><td>BS-MS</td><td>2022</td><td></td></tr>
-          <tr><td>Selja S.</td><td>BS-MS</td><td>2022</td><td></td></tr>
-          <tr><td>Kavya K. H.</td><td>BS-MS</td><td>2021</td><td></td></tr>
-          <tr><td>Akshai Krishnan T.</td><td>BS-MS</td><td>2021</td><td></td></tr>
+          <tr><td>Bindhia R.</td><td>BS-MS</td><td>Jun 2025 – 2026</td><td>M.S. in Financial Risk Management, Trinity College Dublin, Ireland</td></tr>
+          <tr><td>Shreya Jugoolkar</td><td>BS-MS</td><td>Jun 2025 – 2026</td><td>Ph.D. student, Simon Fraser University, Canada</td></tr>
+          <tr><td>Arya E. K.</td><td>M.Sc.</td><td>Dec 2024 – 2025</td><td>Ph.D., IISER Thiruvananthapuram</td></tr>
+          <tr><td>Asiya Anas<span class="co">Co-supervised with Prof. Thirupathi Gudi (IISc)</span></td><td>BS-MS</td><td>Aug 2024 – 2025</td><td>Ph.D., University of Kansas, Lawrence, USA</td></tr>
+          <tr><td>Nannapaneni Veena Sri</td><td>BS-MS</td><td>Aug 2024 – 2025</td><td>Associate Solution Adviser, Deloitte, India</td></tr>
+          <tr><td>Preveena K. V.</td><td>BS-MS</td><td>Aug 2023 – 2024</td><td>Ph.D., IIIT Kottayam</td></tr>
+          <tr><td>Kaushik Babu Nambiar</td><td>BS-MS</td><td>Aug 2023 – 2024</td><td class="none">—</td></tr>
+          <tr><td>Aadhya Krishnakumar</td><td>BS-MS (Minor)</td><td>Jul 2019 – 2024</td><td>M.A. Economics, New York University, USA</td></tr>
+          <tr><td>Devika Santhosh</td><td>M.Sc.</td><td>Jul 2021 – 2023</td><td>Researcher, Data Operations, Synaptic, India</td></tr>
+          <tr><td>Adarsh Krishnan R.<span class="co">Co-supervised with Dr. Sheetal Dharmatti</span></td><td>BS-MS</td><td>Jul 2018 – 2023</td><td>JRF, IIT Bombay</td></tr>
+          <tr><td>Priyanka Mohapatra</td><td>BS-MS</td><td>Jul 2018 – 2023</td><td>Ph.D., IIT Bombay</td></tr>
+          <tr><td>Amjad Hasan P.</td><td>BS-MS</td><td>Jul 2017 – 2023</td><td>Ph.D., IOW, Germany</td></tr>
+          <tr><td>Selja S.</td><td>BS-MS</td><td>Jul 2017 – 2022</td><td class="none">—</td></tr>
+          <tr><td>Akshai Krishnan T.</td><td>BS-MS</td><td>Jul 2016 – 2021</td><td>Integrated Ph.D. (Physics), IISc Bangalore</td></tr>
+          <tr><td>Kavya K. H.</td><td>BS-MS</td><td>Jul 2016 – 2021</td><td>Data Analytics, University of Glasgow, UK</td></tr>
         </tbody>
       </table>
     </section>
